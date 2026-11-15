@@ -1,0 +1,32 @@
+{
+  "mongo": {
+    "Product": 60109,
+    "User": 297534,
+    "REVIEWED": 3296090
+  },
+  "neo4j_nodes": {
+    "Category": 653,
+    "Product": 60109,
+    "Format": 44,
+    "Brand": 22526,
+    "User": 297534
+  },
+  "neo4j_relationships": {
+    "IN_CATEGORY": 193232,
+    "SUBCATEGORY_OF": 652,
+    "AVAILABLE_AS": 100151,
+    "BY_BRAND": 48968,
+    "ALSO_BOUGHT": 559978,
+    "ALSO_VIEWED": 283279,
+    "REVIEWED": 3296090,
+    "SIMILAR_TO": 4884618
+  },
+  "checks": {
+    "Product": true,
+    "User": true,
+    "REVIEWED": true,
+    "no_duplicate_review_ids": true,
+    "all_reviews_synced": true
+  },
+  "ok": true
+}

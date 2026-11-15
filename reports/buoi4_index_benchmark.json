@@ -1,0 +1,289 @@
+{
+  "method": {
+    "subsets": "10%, 50% là các review cũ nhất theo (timestamp, _id); 100% là toàn bộ. MongoDB: $out sang collection tạm. Neo4j: sao chép đúng các review đó từ REVIEWED thành BENCH_REVIEWED và gắn nhãn BenchProduct cho phim có review trong tập con; dữ liệu tạm bị xóa sau khi đo.",
+    "measurement": "Cùng một truy vấn trước và sau khi tạo index; bỏ lần chạy đầu, lấy trung vị 3 lần. MongoDB: executionTimeMillis của explain; Neo4j: thời gian phía server (available + consumed) của PROFILE. Cả hai có độ phân giải 1 ms, \"0 ms\" nghĩa là dưới 1 ms; hệ số nhanh hơn lấy mẫu số tối thiểu 1 ms.",
+    "targets": {
+      "reviewerID": "A2NJO6YE954DBH",
+      "asin": "B00003CWT6",
+      "review_id": "4aa269fef18d2efd2f42111715470d9cf47b4a984f2c334fccb2979ea7843668"
+    }
+  },
+  "mongodb_explain": [
+    {
+      "scale": "10%",
+      "documents": 329608,
+      "queries": {
+        "user_review_history": {
+          "description": "Lịch sử review của một người dùng, mới nhất trước",
+          "index": "{reviewerID: 1, timestamp: -1}",
+          "before": {
+            "ms": 312,
+            "docs_examined": 329608,
+            "keys_examined": 0,
+            "returned": 20,
+            "plan": "COLLSCAN > SORT"
+          },
+          "after": {
+            "ms": 0,
+            "docs_examined": 20,
+            "keys_examined": 20,
+            "returned": 20,
+            "plan": "IXSCAN > FETCH > LIMIT"
+          },
+          "speedup": 312.0
+        },
+        "product_top_helpful_reviews": {
+          "description": "20 review hữu ích nhất của một phim",
+          "index": "{asin: 1, vote: -1}",
+          "before": {
+            "ms": 227,
+            "docs_examined": 329608,
+            "keys_examined": 0,
+            "returned": 20,
+            "plan": "COLLSCAN > SORT"
+          },
+          "after": {
+            "ms": 0,
+            "docs_examined": 20,
+            "keys_examined": 20,
+            "returned": 20,
+            "plan": "IXSCAN > FETCH > LIMIT"
+          },
+          "speedup": 227.0
+        }
+      }
+    },
+    {
+      "scale": "50%",
+      "documents": 1648044,
+      "queries": {
+        "user_review_history": {
+          "description": "Lịch sử review của một người dùng, mới nhất trước",
+          "index": "{reviewerID: 1, timestamp: -1}",
+          "before": {
+            "ms": 2644,
+            "docs_examined": 1648044,
+            "keys_examined": 0,
+            "returned": 20,
+            "plan": "COLLSCAN > SORT"
+          },
+          "after": {
+            "ms": 0,
+            "docs_examined": 20,
+            "keys_examined": 20,
+            "returned": 20,
+            "plan": "IXSCAN > FETCH > LIMIT"
+          },
+          "speedup": 2644.0
+        },
+        "product_top_helpful_reviews": {
+          "description": "20 review hữu ích nhất của một phim",
+          "index": "{asin: 1, vote: -1}",
+          "before": {
+            "ms": 2423,
+            "docs_examined": 1648044,
+            "keys_examined": 0,
+            "returned": 20,
+            "plan": "COLLSCAN > SORT"
+          },
+          "after": {
+            "ms": 0,
+            "docs_examined": 20,
+            "keys_examined": 20,
+            "returned": 20,
+            "plan": "IXSCAN > FETCH > LIMIT"
+          },
+          "speedup": 2423.0
+        }
+      }
+    },
+    {
+      "scale": "100%",
+      "documents": 3296089,
+      "queries": {
+        "user_review_history": {
+          "description": "Lịch sử review của một người dùng, mới nhất trước",
+          "index": "{reviewerID: 1, timestamp: -1}",
+          "before": {
+            "ms": 4943,
+            "docs_examined": 3296089,
+            "keys_examined": 0,
+            "returned": 20,
+            "plan": "COLLSCAN > SORT"
+          },
+          "after": {
+            "ms": 0,
+            "docs_examined": 20,
+            "keys_examined": 20,
+            "returned": 20,
+            "plan": "IXSCAN > FETCH > LIMIT"
+          },
+          "speedup": 4943.0
+        },
+        "product_top_helpful_reviews": {
+          "description": "20 review hữu ích nhất của một phim",
+          "index": "{asin: 1, vote: -1}",
+          "before": {
+            "ms": 4629,
+            "docs_examined": 3296089,
+            "keys_examined": 0,
+            "returned": 20,
+            "plan": "COLLSCAN > SORT"
+          },
+          "after": {
+            "ms": 0,
+            "docs_examined": 20,
+            "keys_examined": 20,
+            "returned": 20,
+            "plan": "IXSCAN > FETCH > LIMIT"
+          },
+          "speedup": 4629.0
+        }
+      }
+    }
+  ],
+  "neo4j_profile": [
+    {
+      "scale": "10%",
+      "relationships": 329608,
+      "products": 25282,
+      "queries": {
+        "lookup_review_by_id": {
+          "description": "Tìm một review theo review_id trên quan hệ",
+          "query": "MATCH ()-[r:BENCH_REVIEWED {review_id:$rid}]->() RETURN r.review_id AS id",
+          "index": "CREATE INDEX bench_review_id IF NOT EXISTS FOR ()-[r:BENCH_REVIEWED]-() ON (r.review_id)",
+          "before": {
+            "ms": 155,
+            "client_ms": 157.05,
+            "db_hits": 659217,
+            "returned": 1,
+            "plan": "DirectedRelationshipTypeScan > Filter > Projection > ProduceResults"
+          },
+          "after": {
+            "ms": 0,
+            "client_ms": 3.15,
+            "db_hits": 2,
+            "returned": 1,
+            "plan": "DirectedRelationshipIndexSeek > Projection > ProduceResults"
+          },
+          "speedup": 155.0
+        },
+        "high_rated_products": {
+          "description": "Lọc phim điểm TB >= 4.8 và >= 50 review",
+          "query": "MATCH (p:BenchProduct) WHERE p.avg_rating >= 4.8 AND p.review_count >= 50 RETURN p.asin AS asin",
+          "index": "CREATE INDEX bench_product_rating IF NOT EXISTS FOR (p:BenchProduct) ON (p.avg_rating)",
+          "before": {
+            "ms": 15,
+            "client_ms": 23.9,
+            "db_hits": 52784,
+            "returned": 264,
+            "plan": "NodeByLabelScan > Filter > Projection > ProduceResults"
+          },
+          "after": {
+            "ms": 2,
+            "client_ms": 7.05,
+            "db_hits": 4175,
+            "returned": 264,
+            "plan": "NodeIndexSeekByRange > Filter > Projection > ProduceResults"
+          },
+          "speedup": 7.5
+        }
+      }
+    },
+    {
+      "scale": "50%",
+      "relationships": 1648044,
+      "products": 54214,
+      "queries": {
+        "lookup_review_by_id": {
+          "description": "Tìm một review theo review_id trên quan hệ",
+          "query": "MATCH ()-[r:BENCH_REVIEWED {review_id:$rid}]->() RETURN r.review_id AS id",
+          "index": "CREATE INDEX bench_review_id IF NOT EXISTS FOR ()-[r:BENCH_REVIEWED]-() ON (r.review_id)",
+          "before": {
+            "ms": 849,
+            "client_ms": 852.18,
+            "db_hits": 3296089,
+            "returned": 1,
+            "plan": "DirectedRelationshipTypeScan > Filter > Projection > ProduceResults"
+          },
+          "after": {
+            "ms": 0,
+            "client_ms": 2.68,
+            "db_hits": 2,
+            "returned": 1,
+            "plan": "DirectedRelationshipIndexSeek > Projection > ProduceResults"
+          },
+          "speedup": 849.0
+        },
+        "high_rated_products": {
+          "description": "Lọc phim điểm TB >= 4.8 và >= 50 review",
+          "query": "MATCH (p:BenchProduct) WHERE p.avg_rating >= 4.8 AND p.review_count >= 50 RETURN p.asin AS asin",
+          "index": "CREATE INDEX bench_product_rating IF NOT EXISTS FOR (p:BenchProduct) ON (p.avg_rating)",
+          "before": {
+            "ms": 27,
+            "client_ms": 33.59,
+            "db_hits": 115309,
+            "returned": 734,
+            "plan": "NodeByLabelScan > Filter > Projection > ProduceResults"
+          },
+          "after": {
+            "ms": 5,
+            "client_ms": 13.97,
+            "db_hits": 13027,
+            "returned": 734,
+            "plan": "NodeIndexSeekByRange > Filter > Projection > ProduceResults"
+          },
+          "speedup": 5.4
+        }
+      }
+    },
+    {
+      "scale": "100%",
+      "relationships": 3296089,
+      "products": 60109,
+      "queries": {
+        "lookup_review_by_id": {
+          "description": "Tìm một review theo review_id trên quan hệ",
+          "query": "MATCH ()-[r:BENCH_REVIEWED {review_id:$rid}]->() RETURN r.review_id AS id",
+          "index": "CREATE INDEX bench_review_id IF NOT EXISTS FOR ()-[r:BENCH_REVIEWED]-() ON (r.review_id)",
+          "before": {
+            "ms": 1790,
+            "client_ms": 1793.51,
+            "db_hits": 6592179,
+            "returned": 1,
+            "plan": "DirectedRelationshipTypeScan > Filter > Projection > ProduceResults"
+          },
+          "after": {
+            "ms": 0,
+            "client_ms": 2.35,
+            "db_hits": 2,
+            "returned": 1,
+            "plan": "DirectedRelationshipIndexSeek > Projection > ProduceResults"
+          },
+          "speedup": 1790.0
+        },
+        "high_rated_products": {
+          "description": "Lọc phim điểm TB >= 4.8 và >= 50 review",
+          "query": "MATCH (p:BenchProduct) WHERE p.avg_rating >= 4.8 AND p.review_count >= 50 RETURN p.asin AS asin",
+          "index": "CREATE INDEX bench_product_rating IF NOT EXISTS FOR (p:BenchProduct) ON (p.avg_rating)",
+          "before": {
+            "ms": 22,
+            "client_ms": 34.09,
+            "db_hits": 128244,
+            "returned": 812,
+            "plan": "NodeByLabelScan > Filter > Projection > ProduceResults"
+          },
+          "after": {
+            "ms": 6,
+            "client_ms": 15.6,
+            "db_hits": 15239,
+            "returned": 812,
+            "plan": "NodeIndexSeekByRange > Filter > Projection > ProduceResults"
+          },
+          "speedup": 3.7
+        }
+      }
+    }
+  ],
+  "seconds": 369.22
+}

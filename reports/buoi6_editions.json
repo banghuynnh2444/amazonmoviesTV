@@ -1,0 +1,191 @@
+{
+  "rule": "Hai mã là ấn bản của cùng tác phẩm khi chung >= 80% review của mã ít review hơn và >= 3 review; review trùng = cùng người, cùng ngày, cùng số sao, cùng tiêu đề và 200 ký tự đầu nội dung.",
+  "duplicate_review_groups": 192092,
+  "product_pairs_sharing_reviews": 1092050,
+  "pairs_linked": 735,
+  "works_with_several_editions": 694,
+  "products_in_those_works": 1408,
+  "works_total": 59395,
+  "review_rows": 3296089,
+  "copy_rows": 150464,
+  "unique_reviews": 3145625,
+  "identical_rows_across_works": 197946,
+  "identical_rows_note": "Dòng giống hệt một review khác của cùng người nhưng ở tác phẩm khác (chung < 80%, ví dụ các mùa của series): giữ lại vì là hai tác phẩm khác nhau; đánh giá gợi ý không chia các dòng này giữa Train và Test (dup_group).",
+  "duplicate_groups_marked": {
+    "groups": 192092,
+    "rows": 540502
+  },
+  "largest_works": [
+    {
+      "title": "Guardians of the Galaxy",
+      "editions": [
+        {
+          "asin": "B00PY4Q9OS",
+          "title": "Guardians of the Galaxy",
+          "reviews": 7082
+        },
+        {
+          "asin": "B00Q0G2VXM",
+          "title": "Guardians Of The Galaxy Region Free",
+          "reviews": 7074
+        },
+        {
+          "asin": "B00R8GUXPG",
+          "title": "Guardians of the Galaxy [Blu-ray]",
+          "reviews": 7079
+        },
+        {
+          "asin": "B01A9R6C1O",
+          "title": "Guardians of the Galaxy Vol. 1",
+          "reviews": 336
+        }
+      ]
+    },
+    {
+      "title": "Band of Brothers(Elite SC/BD+DCExp12-21)",
+      "editions": [
+        {
+          "asin": "B00006CXSS",
+          "title": "Band Of Brothers (DVD)",
+          "reviews": 5711
+        },
+        {
+          "asin": "B003YCOIFO",
+          "title": "Band Of Brothers: Complete HBO Series",
+          "reviews": 50
+        },
+        {
+          "asin": "B00YSG2ZPA",
+          "title": "Band of Brothers(Elite SC/BD+DCExp12-21)",
+          "reviews": 5747
+        }
+      ]
+    },
+    {
+      "title": "Lucy",
+      "editions": [
+        {
+          "asin": "B00M25EALG",
+          "title": "Lucy",
+          "reviews": 3458
+        },
+        {
+          "asin": "B00V950K3C",
+          "title": "Lucy",
+          "reviews": 3466
+        }
+      ]
+    },
+    {
+      "title": "The Hobbit: The Battle of the Five Armies [DVD] [2015]",
+      "editions": [
+        {
+          "asin": "B0095HHLMO",
+          "title": "The Hobbit: The Battle of the Five Armies [DVD] [2015]",
+          "reviews": 3417
+        },
+        {
+          "asin": "B00XRZU2E4",
+          "title": "Hobbit 3: The Battle of the Five Armies",
+          "reviews": 3414
+        }
+      ]
+    },
+    {
+      "title": "Mad Max : Fury Road - Edition limitée 3D - Coffret Voiture [Blu-ray]",
+      "editions": [
+        {
+          "asin": "B00XQ142MW",
+          "title": "Mad Max: Fury Road",
+          "reviews": 3265
+        },
+        {
+          "asin": "B00YQJRYGY",
+          "title": "Mad Max : Fury Road - Edition limitée 3D - Coffret Voiture [Blu-ray]",
+          "reviews": 3266
+        }
+      ]
+    },
+    {
+      "title": "Kingsman: The Secret Service",
+      "editions": [
+        {
+          "asin": "630356027X",
+          "title": "Secret Service VHS",
+          "reviews": 1667
+        },
+        {
+          "asin": "B00S1ITA2W",
+          "title": "Kingsman: The Secret Service",
+          "reviews": 3680
+        }
+      ]
+    },
+    {
+      "title": "Star Trek",
+      "editions": [
+        {
+          "asin": "B001AVCFJM",
+          "title": "Star Trek",
+          "reviews": 2615
+        },
+        {
+          "asin": "B01DKLQMM0",
+          "title": "Star Trek XI",
+          "reviews": 2567
+        }
+      ]
+    },
+    {
+      "title": "The white queenÂ StagioneÂ 01The white queenÂ StagioneÂ 01 [4 DVDs] [IT Import]",
+      "editions": [
+        {
+          "asin": "B00BMRTPEM",
+          "title": "The White Queen - Complete Series The White Queen: Series 1 NON-USA FORMAT, PAL, Reg.2 United Kingdom",
+          "reviews": 1727
+        },
+        {
+          "asin": "B00OGL6S64",
+          "title": "The white queenÂ StagioneÂ 01The white queenÂ StagioneÂ 01 [4 DVDs] [IT Import]",
+          "reviews": 3283
+        }
+      ]
+    },
+    {
+      "title": "The Lord of the Rings: The Return of the King",
+      "editions": [
+        {
+          "asin": "B00005JKZY",
+          "title": "The Lord of the Rings: The Return of the King",
+          "reviews": 1716
+        },
+        {
+          "asin": "B00Z9YZRVE",
+          "title": "The Lord Of The Rings: The Return Of The King",
+          "reviews": 1545
+        },
+        {
+          "asin": "B01AUH49W2",
+          "title": "Lord of the Rings Return of the King 2 Disc Extended DVD",
+          "reviews": 1534
+        }
+      ]
+    },
+    {
+      "title": "Blade Runner: The Final Cut",
+      "editions": [
+        {
+          "asin": "0790729628",
+          "title": "Blade Runner",
+          "reviews": 2369
+        },
+        {
+          "asin": "B000VS20M2",
+          "title": "Blade Runner: The Final Cut",
+          "reviews": 2371
+        }
+      ]
+    }
+  ],
+  "seconds": 229.34
+}

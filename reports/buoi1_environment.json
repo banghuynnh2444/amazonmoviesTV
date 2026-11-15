@@ -1,0 +1,16 @@
+{
+  "data_dir": "D:\\AmazonMoviesTV\\data",
+  "raw_files": {
+    "Movies_and_TV_5.json.gz": true,
+    "meta_Movies_and_TV.json.gz": true
+  },
+  "mongodb": {
+    "ok": true,
+    "version": "8.3.11"
+  },
+  "neo4j": {
+    "ok": true,
+    "version": "5.26.33",
+    "gds": "2.13.4"
+  }
+}

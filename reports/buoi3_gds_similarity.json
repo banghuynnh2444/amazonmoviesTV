@@ -1,0 +1,20 @@
+{
+  "total_users": 297531,
+  "min_reviews_filter": 5,
+  "degreeCutoff": 3,
+  "topK": 20,
+  "similarityCutoff": 0.05,
+  "projected": {
+    "nodeCount": 322324,
+    "relationshipCount": 2360746
+  },
+  "estimate": {
+    "bytesMin": 167648864,
+    "bytesMax": 193434784
+  },
+  "nodesCompared": 246433,
+  "relationshipsWritten": 4884618,
+  "users_with_similar_to": 246055,
+  "coverage": 0.827,
+  "seconds": 1337.12
+}

@@ -1,0 +1,111 @@
+{
+  "started_at": 1794352518.308858,
+  "scope": "full Movies_and_TV_5 + metadata",
+  "steps": {
+    "environment": {
+      "mongo": "8.3.11",
+      "gds_version": "2.13.4"
+    },
+    "mongodb": {
+      "review_limit": null,
+      "sentiment_in_import": true,
+      "metadata_raw_rows": 203766,
+      "metadata_valid_rows": 203707,
+      "review_raw_rows": 3410019,
+      "review_invalid": 0,
+      "review_without_metadata": 5227,
+      "review_valid_source_rows": 3404792,
+      "unused_metadata_removed": 121672,
+      "products": 60109,
+      "reviews": 3296089,
+      "users": 297529,
+      "exact_duplicate_source_rows": 108703,
+      "seconds": 915.54
+    },
+    "neo4j": {
+      "products": 60109,
+      "users": 297529,
+      "reviews": 3296089,
+      "seconds": 658.55
+    },
+    "gds_similarity": {
+      "total_users": 297530,
+      "min_reviews_filter": 5,
+      "degreeCutoff": 3,
+      "topK": 20,
+      "similarityCutoff": 0.05,
+      "projected": {
+        "nodeCount": 342472,
+        "relationshipCount": 2541505
+      },
+      "estimate": {
+        "bytesMin": 178128344,
+        "bytesMax": 205526104
+      },
+      "nodesCompared": 264819,
+      "relationshipsWritten": 5260638,
+      "users_with_similar_to": 264526,
+      "coverage": 0.8891,
+      "seconds": 1343.72
+    },
+    "reconciliation": {
+      "mongo": {
+        "Product": 60109,
+        "User": 297530,
+        "REVIEWED": 3296089
+      },
+      "neo4j_nodes": {
+        "Category": 653,
+        "Product": 60109,
+        "Format": 44,
+        "Brand": 22556,
+        "User": 297530
+      },
+      "neo4j_relationships": {
+        "IN_CATEGORY": 193232,
+        "SUBCATEGORY_OF": 652,
+        "AVAILABLE_AS": 100151,
+        "BY_BRAND": 51711,
+        "ALSO_BOUGHT": 559978,
+        "ALSO_VIEWED": 283279,
+        "REVIEWED": 3296089,
+        "SIMILAR_TO": 5260638
+      },
+      "checks": {
+        "Product": true,
+        "User": true,
+        "REVIEWED": true,
+        "no_duplicate_review_ids": true,
+        "all_reviews_synced": true
+      },
+      "ok": true
+    },
+    "queries_api": {
+      "report": "buoi3_queries_api.json",
+      "ok": true
+    },
+    "session4": {
+      "graph_analytics_seconds": 11.72,
+      "index_benchmark_seconds": 369.22,
+      "db_comparison_seconds": 5.99,
+      "total_seconds": 386.98,
+      "ok": true,
+      "completed_at": "2026-11-11 18:24:13"
+    },
+    "session5": {
+      "web_ui_report": "buoi5_web_ui.json",
+      "url": "http://127.0.0.1:5055",
+      "endpoints": 36,
+      "ok": true
+    },
+    "session6": {
+      "tests": "18/18 (MOVIES_INTEGRATION=1 python -m pytest -q)",
+      "docs": "docs/TIEN_DO_BUOI_6.md",
+      "report": "https://claude.ai/artifact/7ueR5VAtcxat4gsEMi8yjm",
+      "ok": true,
+      "completed_at": "2026-11-11 23:05:57"
+    }
+  },
+  "complete": true,
+  "elapsed_seconds": 1612.45
+}

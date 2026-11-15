@@ -1,0 +1,307 @@
+{
+  "protocol": {
+    "unit": "Tác phẩm: các ấn bản (DVD, Blu-ray…) của cùng phim được gộp; review bản sao giữa các ấn bản bị bỏ trước khi chia.",
+    "split": "Mỗi người dùng: 80% review cũ nhất là Train, 20% mới nhất là Test (sắp theo thời gian). Review giống hệt nhau của cùng người ở hai tác phẩm khác nhau không bị tách: nếu một dòng ở Train thì cả nhóm ở Train.",
+    "identical_rows_moved_to_train": 39017,
+    "relevance": "Tác phẩm trong Test có điểm TB của người dùng >= 4 sao và chưa xuất hiện trong Train ở bất kỳ ấn bản nào.",
+    "eligible_users": "Người dùng có >= 5 review (không tính bản sao) và >= 1 tác phẩm phù hợp trong Test; chọn ngẫu nhiên đều.",
+    "implementation": "Bản Python 1-1 của truy vấn Cypher trong recommend.py (algorithms.py), chạy trên đồ thị chỉ gồm Train.",
+    "popular_baseline": "Popular = tác phẩm có nhiều review >= 4 sao nhất trong Train, bỏ tác phẩm người dùng đã xem.",
+    "fallback": "Phương pháp không trả kết quả thì dùng Popular, giống website.",
+    "k": 10,
+    "seed": 42,
+    "total_eligible_users": 227686,
+    "test_users": 1200,
+    "validation_users": 600,
+    "avg_relevant_items_per_test_user": 2.25,
+    "products": 60109,
+    "works": 59395
+  },
+  "residual_copy_leakage": {
+    "relevant_test_reviews": 2700,
+    "identical_to_a_train_review": 0,
+    "rate": 0.0
+  },
+  "cf_shrinkage": {
+    "grid": [
+      0.0,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0,
+      64.0,
+      128.0
+    ],
+    "selected": 16.0,
+    "selected_by": "chọn cùng số láng giềng tối thiểu: cặp ít lọc nhất rồi λ nhỏ nhất đạt ít nhất 99% NDCG@10 tốt nhất trên tập validation; bảng dưới là đường λ ở số láng giềng tối thiểu = 2",
+    "production_value": 16.0,
+    "production_matches": true,
+    "validation": {
+      "0.0": {
+        "precision@10": 0.0058,
+        "recall@10": 0.0334,
+        "ndcg@10": 0.0204,
+        "hit_rate@10": 0.0517
+      },
+      "0.5": {
+        "precision@10": 0.0078,
+        "recall@10": 0.0431,
+        "ndcg@10": 0.0277,
+        "hit_rate@10": 0.0717
+      },
+      "1.0": {
+        "precision@10": 0.0082,
+        "recall@10": 0.0442,
+        "ndcg@10": 0.0286,
+        "hit_rate@10": 0.0733
+      },
+      "2.0": {
+        "precision@10": 0.0088,
+        "recall@10": 0.049,
+        "ndcg@10": 0.0309,
+        "hit_rate@10": 0.08
+      },
+      "4.0": {
+        "precision@10": 0.009,
+        "recall@10": 0.0494,
+        "ndcg@10": 0.0316,
+        "hit_rate@10": 0.0817
+      },
+      "8.0": {
+        "precision@10": 0.0092,
+        "recall@10": 0.0495,
+        "ndcg@10": 0.032,
+        "hit_rate@10": 0.0833
+      },
+      "16.0": {
+        "precision@10": 0.0093,
+        "recall@10": 0.0504,
+        "ndcg@10": 0.0323,
+        "hit_rate@10": 0.085
+      },
+      "32.0": {
+        "precision@10": 0.0093,
+        "recall@10": 0.0504,
+        "ndcg@10": 0.0323,
+        "hit_rate@10": 0.085
+      },
+      "64.0": {
+        "precision@10": 0.0093,
+        "recall@10": 0.0504,
+        "ndcg@10": 0.0324,
+        "hit_rate@10": 0.085
+      },
+      "128.0": {
+        "precision@10": 0.0093,
+        "recall@10": 0.0504,
+        "ndcg@10": 0.0324,
+        "hit_rate@10": 0.085
+      }
+    }
+  },
+  "cf_min_support": {
+    "grid": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "selected": 2,
+    "meaning": "CF chỉ đề xuất tác phẩm có ít nhất N láng giềng cùng thích; N = 1 là không lọc. Không lọc thì láng giềng có rất ít phim thích (Jaccard cao) kéo vào phim lạc đề.",
+    "production_value": 2,
+    "production_matches": true,
+    "validation": {
+      "1": {
+        "precision@10": 0.0068,
+        "recall@10": 0.0387,
+        "ndcg@10": 0.0227,
+        "hit_rate@10": 0.0633
+      },
+      "2": {
+        "precision@10": 0.0093,
+        "recall@10": 0.0504,
+        "ndcg@10": 0.0323,
+        "hit_rate@10": 0.085
+      },
+      "3": {
+        "precision@10": 0.0092,
+        "recall@10": 0.0474,
+        "ndcg@10": 0.0316,
+        "hit_rate@10": 0.0833
+      },
+      "4": {
+        "precision@10": 0.0067,
+        "recall@10": 0.035,
+        "ndcg@10": 0.0247,
+        "hit_rate@10": 0.0617
+      },
+      "5": {
+        "precision@10": 0.0055,
+        "recall@10": 0.0293,
+        "ndcg@10": 0.0207,
+        "hit_rate@10": 0.0517
+      }
+    },
+    "joint_ndcg": {
+      "1|0.0": 0.0081,
+      "1|0.5": 0.0152,
+      "1|1.0": 0.0172,
+      "1|2.0": 0.0201,
+      "1|4.0": 0.0212,
+      "1|8.0": 0.022,
+      "1|16.0": 0.0227,
+      "1|32.0": 0.0228,
+      "1|64.0": 0.0228,
+      "1|128.0": 0.0228,
+      "2|0.0": 0.0204,
+      "2|0.5": 0.0277,
+      "2|1.0": 0.0286,
+      "2|2.0": 0.0309,
+      "2|4.0": 0.0316,
+      "2|8.0": 0.032,
+      "2|16.0": 0.0323,
+      "2|32.0": 0.0323,
+      "2|64.0": 0.0324,
+      "2|128.0": 0.0324,
+      "3|0.0": 0.0246,
+      "3|0.5": 0.0283,
+      "3|1.0": 0.0285,
+      "3|2.0": 0.0308,
+      "3|4.0": 0.0315,
+      "3|8.0": 0.0315,
+      "3|16.0": 0.0316,
+      "3|32.0": 0.0316,
+      "3|64.0": 0.0317,
+      "3|128.0": 0.0317,
+      "4|0.0": 0.0237,
+      "4|0.5": 0.0238,
+      "4|1.0": 0.0244,
+      "4|2.0": 0.0247,
+      "4|4.0": 0.025,
+      "4|8.0": 0.0247,
+      "4|16.0": 0.0247,
+      "4|32.0": 0.0247,
+      "4|64.0": 0.0249,
+      "4|128.0": 0.0249,
+      "5|0.0": 0.0213,
+      "5|0.5": 0.0207,
+      "5|1.0": 0.021,
+      "5|2.0": 0.021,
+      "5|4.0": 0.0209,
+      "5|8.0": 0.0207,
+      "5|16.0": 0.0207,
+      "5|32.0": 0.0207,
+      "5|64.0": 0.0213,
+      "5|128.0": 0.0213
+    }
+  },
+  "hybrid_normalization": {
+    "selected": "max",
+    "production_value": "max",
+    "production_matches": true,
+    "selected_by": "NDCG@10 cao nhất trên tập validation (với λ và số láng giềng tối thiểu đã chọn)",
+    "options": {
+      "max": "điểm / điểm lớn nhất",
+      "minmax": "(điểm − nhỏ nhất) / (lớn nhất − nhỏ nhất)"
+    },
+    "validation": {
+      "max": {
+        "precision@10": 0.0097,
+        "recall@10": 0.0472,
+        "ndcg@10": 0.0333,
+        "hit_rate@10": 0.0833
+      },
+      "minmax": {
+        "precision@10": 0.0082,
+        "recall@10": 0.0429,
+        "ndcg@10": 0.0307,
+        "hit_rate@10": 0.0733
+      }
+    }
+  },
+  "metrics": {
+    "popular": {
+      "precision@10": 0.0031,
+      "recall@10": 0.017,
+      "ndcg@10": 0.0102,
+      "hit_rate@10": 0.0308
+    },
+    "collaborative": {
+      "precision@10": 0.0103,
+      "recall@10": 0.0508,
+      "ndcg@10": 0.0375,
+      "hit_rate@10": 0.0867
+    },
+    "related": {
+      "precision@10": 0.0067,
+      "recall@10": 0.0333,
+      "ndcg@10": 0.0201,
+      "hit_rate@10": 0.0583
+    },
+    "content": {
+      "precision@10": 0.0027,
+      "recall@10": 0.0149,
+      "ndcg@10": 0.0104,
+      "hit_rate@10": 0.0225
+    },
+    "hybrid": {
+      "precision@10": 0.0108,
+      "recall@10": 0.0538,
+      "ndcg@10": 0.0393,
+      "hit_rate@10": 0.0925
+    }
+  },
+  "personalized_coverage": {
+    "collaborative": 0.7775,
+    "related": 0.9783,
+    "content": 0.99,
+    "hybrid": 0.9908
+  },
+  "limitations": [
+    "Gộp ấn bản theo quy tắc chung >= 80% review: các phần/mùa khác nhau của một series vẫn là tác phẩm riêng. Review giống hệt nhau của cùng người ở các tác phẩm đó được giữ (người dùng tự dán lại) nhưng không bị chia giữa Train và Test; residual_copy_leakage kiểm tra lại điều này.",
+    "Người dùng mới chỉ chấm vài phim: CF dựa trên rất ít láng giềng (có khi chỉ 1 người chung 2 phim) nên gợi ý dễ lệch gu; các số đo trên được tính cho người dùng có >= 5 review.",
+    "also_buy/also_view là ảnh chụp metadata năm 2018 của Amazon, không chia theo thời gian, nên Related/Hybrid có thể hưởng lợi từ thông tin mua cùng phát sinh sau thời điểm chia.",
+    "Chia 80/20 theo từng người dùng: tập Train của người này có thể chứa review mới hơn tập Test của người khác.",
+    "Catalog dùng metadata đầy đủ; formats được tổng hợp từ cả review Train và Test. Content/Hybrid chưa phải đánh giá thời gian hoàn toàn độc lập.",
+    "Chỉ các review giữ lại được dùng làm nhãn phù hợp. Sản phẩm chưa được review không có nhãn sở thích; các số đo là proxy ngoại tuyến, không phải độ chính xác hay cận dưới được bảo đảm cho mức hài lòng thực tế."
+  ],
+  "parity_check": {
+    "users": 20,
+    "seed": 99,
+    "k": 10,
+    "methods": {
+      "popular": {
+        "identical_top_k_rate": 1.0,
+        "mean_jaccard_top_k": 1.0,
+        "avg_cypher_seconds": 0.143
+      },
+      "collaborative": {
+        "identical_top_k_rate": 1.0,
+        "mean_jaccard_top_k": 1.0,
+        "avg_cypher_seconds": 0.066
+      },
+      "related": {
+        "identical_top_k_rate": 1.0,
+        "mean_jaccard_top_k": 1.0,
+        "avg_cypher_seconds": 0.02
+      },
+      "content": {
+        "identical_top_k_rate": 1.0,
+        "mean_jaccard_top_k": 1.0,
+        "avg_cypher_seconds": 0.045
+      },
+      "hybrid": {
+        "identical_top_k_rate": 1.0,
+        "mean_jaccard_top_k": 1.0,
+        "avg_cypher_seconds": 0.114
+      }
+    },
+    "note": "Đã cố định thứ tự khi trùng timestamp bằng asin hoặc review_id. Chỉ kiểm tra Top-K trên mẫu người dùng; không chứng minh hai bản tương đương trên mọi dữ liệu hoặc điểm số.",
+    "seconds": 44.89
+  },
+  "seconds": 112.88
+}

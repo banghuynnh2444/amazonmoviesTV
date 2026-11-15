@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phim Amazon — tìm phim, đánh giá và gợi ý</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="/static/vendor/chart.umd.js" defer></script>
+  <script src="/static/vendor/vis-network.min.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="site-title" href="#/" id="siteTitle">Phim Amazon</a>
+      <form class="top-search" data-form="top-search" role="search">
+        <input name="q" type="search" placeholder="Tìm tên phim…" aria-label="Tìm tên phim" />
+        <button type="submit">Tìm</button>
+      </form>
+      <div class="account" id="accountBox"></div>
+    </div>
+    <nav class="wrap nav" id="nav" aria-label="Điều hướng chính"></nav>
+  </header>
+  <main class="wrap" id="view"><p class="muted">Đang tải…</p></main>
+  <footer class="wrap foot" id="footer">
+    Dữ liệu phim và đánh giá: Amazon Review Data 2018 (UCSD), nhóm Movies &amp; TV. ·
+    Đồ án: Huỳnh Công Bằng (4654100001), Lê Minh Thuận (4654100012).
+  </footer>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,576 @@
+{
+  "parameters": {
+    "user": "AP9WKJ5YFQWWB",
+    "asin": "B00OV3VGP0",
+    "runs_per_query": 5,
+    "timing": "trung vị sau 1 lần khởi động"
+  },
+  "tasks": {
+    "a_similar_users": {
+      "description": "Top 20 người dùng có nhiều tác phẩm cùng thích (>= 4 sao) nhất với một người dùng",
+      "mongodb": {
+        "median_ms": 31.57,
+        "min_ms": 30.39,
+        "stages_top_level": 12,
+        "stages_total": 15,
+        "pipeline": [
+          {
+            "$match": {
+              "reviewerID": "AP9WKJ5YFQWWB",
+              "is_copy": {
+                "$ne": true
+              }
+            }
+          },
+          {
+            "$group": {
+              "_id": "$work",
+              "rating": {
+                "$avg": "$overall"
+              },
+              "lastReview": {
+                "$max": "$timestamp"
+              }
+            }
+          },
+          {
+            "$match": {
+              "rating": {
+                "$gte": 4
+              }
+            }
+          },
+          {
+            "$sort": {
+              "lastReview": -1,
+              "_id": 1
+            }
+          },
+          {
+            "$limit": 100
+          },
+          {
+            "$lookup": {
+              "from": "reviews",
+              "localField": "_id",
+              "foreignField": "work",
+              "pipeline": [
+                {
+                  "$match": {
+                    "reviewerID": {
+                      "$ne": "AP9WKJ5YFQWWB"
+                    },
+                    "is_copy": {
+                      "$ne": true
+                    }
+                  }
+                },
+                {
+                  "$group": {
+                    "_id": "$reviewerID",
+                    "rating": {
+                      "$avg": "$overall"
+                    }
+                  }
+                },
+                {
+                  "$match": {
+                    "rating": {
+                      "$gte": 4
+                    }
+                  }
+                }
+              ],
+              "as": "co"
+            }
+          },
+          {
+            "$unwind": "$co"
+          },
+          {
+            "$group": {
+              "_id": "$co._id",
+              "common": {
+                "$sum": 1
+              }
+            }
+          },
+          {
+            "$match": {
+              "common": {
+                "$gte": 2
+              }
+            }
+          },
+          {
+            "$sort": {
+              "common": -1,
+              "_id": 1
+            }
+          },
+          {
+            "$limit": 20
+          },
+          {
+            "$project": {
+              "_id": 0,
+              "user": "$_id",
+              "common": 1
+            }
+          }
+        ],
+        "top_3": [
+          {
+            "common": 5,
+            "user": "A2YUA3H1LLU53Z"
+          },
+          {
+            "common": 4,
+            "user": "A10ODC971MDHV8"
+          },
+          {
+            "common": 4,
+            "user": "A1GHUN5HXMHZ89"
+          }
+        ]
+      },
+      "neo4j": {
+        "median_ms": 19.29,
+        "min_ms": 19.14,
+        "cypher_clauses": 19,
+        "cypher": "MATCH (u:User {reviewerID:$user})\nCALL (u) {\n  MATCH (u)-[r:REVIEWED]->(p:Product) WHERE NOT coalesce(r.copy, false)\n  WITH p.work AS w, avg(r.rating) AS rating, max(r.timestamp) AS lastReview WHERE rating >= 4\n  ORDER BY lastReview DESC, w ASC LIMIT 100 RETURN collect(w) AS liked\n}\nUNWIND liked AS w\nMATCH (:Product {work:w})<-[nr:REVIEWED]-(other:User) WHERE other <> u AND NOT coalesce(nr.copy, false)\nWITH other, w, avg(nr.rating) AS rating WHERE rating >= 4\nWITH other.reviewerID AS user, count(DISTINCT w) AS common WHERE common >= 2\nRETURN user, common ORDER BY common DESC, user ASC LIMIT 20",
+        "top_3": [
+          {
+            "user": "A2YUA3H1LLU53Z",
+            "common": 5
+          },
+          {
+            "user": "A10ODC971MDHV8",
+            "common": 4
+          },
+          {
+            "user": "A1GHUN5HXMHZ89",
+            "common": 4
+          }
+        ]
+      },
+      "results_match": true,
+      "rows": 20,
+      "faster_engine": "Neo4j",
+      "speedup_ratio": 1.64
+    },
+    "b_copurchase_2hop": {
+      "description": "Tác phẩm mua/xem cùng trong 1–2 bước (ALSO_BOUGHT / ALSO_VIEWED), gộp ấn bản",
+      "mongodb": {
+        "median_ms": 44.18,
+        "min_ms": 42.11,
+        "stages_top_level": 16,
+        "stages_total": 23,
+        "pipeline": [
+          {
+            "$match": {
+              "asin": "B00OV3VGP0",
+              "active": true
+            }
+          },
+          {
+            "$project": {
+              "seed": "$asin",
+              "seed_work": "$work",
+              "hop1": {
+                "$concatArrays": [
+                  {
+                    "$setUnion": [
+                      {
+                        "$ifNull": [
+                          "$also_buy",
+                          []
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "$setUnion": [
+                      {
+                        "$ifNull": [
+                          "$also_view",
+                          []
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "$unwind": "$hop1"
+          },
+          {
+            "$match": {
+              "$expr": {
+                "$ne": [
+                  "$hop1",
+                  "$seed"
+                ]
+              }
+            }
+          },
+          {
+            "$lookup": {
+              "from": "products",
+              "localField": "hop1",
+              "foreignField": "asin",
+              "as": "p1"
+            }
+          },
+          {
+            "$unwind": "$p1"
+          },
+          {
+            "$match": {
+              "p1.active": true
+            }
+          },
+          {
+            "$project": {
+              "seed_work": 1,
+              "hop1_asin": "$p1.asin",
+              "hop1_work": "$p1.work",
+              "hop2_list": {
+                "$concatArrays": [
+                  {
+                    "$setUnion": [
+                      {
+                        "$ifNull": [
+                          "$p1.also_buy",
+                          []
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "$setUnion": [
+                      {
+                        "$ifNull": [
+                          "$p1.also_view",
+                          []
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "$facet": {
+              "step1": [
+                {
+                  "$project": {
+                    "candidate": "$hop1_work",
+                    "seed_work": 1,
+                    "hops": {
+                      "$literal": 1
+                    }
+                  }
+                }
+              ],
+              "step2": [
+                {
+                  "$unwind": "$hop2_list"
+                },
+                {
+                  "$match": {
+                    "$expr": {
+                      "$ne": [
+                        "$hop2_list",
+                        "$hop1_asin"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$lookup": {
+                    "from": "products",
+                    "localField": "hop2_list",
+                    "foreignField": "asin",
+                    "as": "p2"
+                  }
+                },
+                {
+                  "$unwind": "$p2"
+                },
+                {
+                  "$match": {
+                    "p2.active": true
+                  }
+                },
+                {
+                  "$project": {
+                    "candidate": "$p2.work",
+                    "seed_work": 1,
+                    "hops": {
+                      "$literal": 2
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "$project": {
+              "paths": {
+                "$concatArrays": [
+                  "$step1",
+                  "$step2"
+                ]
+              }
+            }
+          },
+          {
+            "$unwind": "$paths"
+          },
+          {
+            "$match": {
+              "$expr": {
+                "$ne": [
+                  "$paths.candidate",
+                  "$paths.seed_work"
+                ]
+              }
+            }
+          },
+          {
+            "$group": {
+              "_id": "$paths.candidate",
+              "hops": {
+                "$min": "$paths.hops"
+              },
+              "support": {
+                "$sum": 1
+              }
+            }
+          },
+          {
+            "$project": {
+              "_id": 0,
+              "asin": "$_id",
+              "hops": 1,
+              "support": 1,
+              "score": {
+                "$divide": [
+                  "$support",
+                  "$hops"
+                ]
+              }
+            }
+          },
+          {
+            "$sort": {
+              "score": -1,
+              "asin": 1
+            }
+          },
+          {
+            "$limit": 10
+          }
+        ],
+        "top_3": [
+          {
+            "hops": 1,
+            "support": 5,
+            "asin": "B01DY8NDBM",
+            "score": 5.0
+          },
+          {
+            "hops": 1,
+            "support": 4,
+            "asin": "B01ELI9E9O",
+            "score": 4.0
+          },
+          {
+            "hops": 2,
+            "support": 4,
+            "asin": "B018IDVB3U",
+            "score": 2.0
+          }
+        ]
+      },
+      "neo4j": {
+        "median_ms": 1.88,
+        "min_ms": 1.44,
+        "cypher_clauses": 6,
+        "cypher": "MATCH path=(seed:Product {asin:$asin})-[:ALSO_BOUGHT|ALSO_VIEWED*1..2]->(candidate:Product)\nWHERE candidate.work <> seed.work\nWITH candidate.work AS work, min(length(path)) AS hops, count(path) AS support\nRETURN work AS asin, toFloat(support)/hops AS score, support, hops\nORDER BY score DESC, asin ASC LIMIT 10",
+        "top_3": [
+          {
+            "asin": "B01DY8NDBM",
+            "score": 5.0,
+            "support": 5,
+            "hops": 1
+          },
+          {
+            "asin": "B01ELI9E9O",
+            "score": 4.0,
+            "support": 4,
+            "hops": 1
+          },
+          {
+            "asin": "B018IDVB3U",
+            "score": 2.0,
+            "support": 4,
+            "hops": 2
+          }
+        ]
+      },
+      "results_match": true,
+      "rows": 10,
+      "faster_engine": "Neo4j",
+      "speedup_ratio": 23.5
+    },
+    "c_category_avg_rating": {
+      "description": "Điểm trung bình và số review theo thể loại (tác phẩm, không tính bản sao)",
+      "mongodb": {
+        "median_ms": 265.97,
+        "min_ms": 258.96,
+        "stages_top_level": 8,
+        "stages_total": 8,
+        "pipeline": [
+          {
+            "$match": {
+              "active": true,
+              "primary": true
+            }
+          },
+          {
+            "$unwind": "$categories"
+          },
+          {
+            "$match": {
+              "categories": {
+                "$nin": [
+                  "All",
+                  "All Titles",
+                  "Blu-ray",
+                  "Boxed Sets",
+                  "Characters & Series",
+                  "Featured Categories",
+                  "Fully Loaded DVDs",
+                  "Genre for Featured Categories",
+                  "Movies & TV",
+                  "Studio Specials",
+                  "Widescreen"
+                ]
+              }
+            }
+          },
+          {
+            "$group": {
+              "_id": "$categories",
+              "work_count": {
+                "$sum": 1
+              },
+              "review_count": {
+                "$sum": "$stats.work_reviews"
+              },
+              "weighted": {
+                "$sum": {
+                  "$multiply": [
+                    "$stats.work_reviews",
+                    "$stats.work_avg"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "$match": {
+              "review_count": {
+                "$gt": 0
+              }
+            }
+          },
+          {
+            "$project": {
+              "_id": 0,
+              "category": "$_id",
+              "work_count": 1,
+              "review_count": 1,
+              "avg_rating": {
+                "$round": [
+                  {
+                    "$divide": [
+                      "$weighted",
+                      "$review_count"
+                    ]
+                  },
+                  4
+                ]
+              }
+            }
+          },
+          {
+            "$sort": {
+              "review_count": -1,
+              "category": 1
+            }
+          },
+          {
+            "$limit": 20
+          }
+        ],
+        "top_3": [
+          {
+            "work_count": 4483,
+            "review_count": 393783,
+            "category": "Movies",
+            "avg_rating": 4.0904
+          },
+          {
+            "work_count": 6037,
+            "review_count": 268964,
+            "category": "Drama",
+            "avg_rating": 4.1887
+          },
+          {
+            "work_count": 4479,
+            "review_count": 224698,
+            "category": "Action & Adventure",
+            "avg_rating": 4.1591
+          }
+        ]
+      },
+      "neo4j": {
+        "median_ms": 132.64,
+        "min_ms": 130.6,
+        "cypher_clauses": 9,
+        "cypher": "MATCH (p:Product {primary:true})-[:IN_CATEGORY]->(c:Category)\nWHERE NOT c.name IN $navigation\nWITH c.name AS category, collect(DISTINCT p) AS works\nUNWIND works AS p\nWITH category, count(p) AS work_count, sum(p.work_reviews) AS review_count,\n     sum(p.work_reviews * p.work_avg) AS weighted\nWHERE review_count > 0\nRETURN category, work_count, review_count, round(weighted / review_count, 4) AS avg_rating\nORDER BY review_count DESC, category ASC LIMIT 20",
+        "top_3": [
+          {
+            "category": "Movies",
+            "work_count": 4483,
+            "review_count": 393783,
+            "avg_rating": 4.0904
+          },
+          {
+            "category": "Drama",
+            "work_count": 6037,
+            "review_count": 268964,
+            "avg_rating": 4.1887
+          },
+          {
+            "category": "Action & Adventure",
+            "work_count": 4479,
+            "review_count": 224698,
+            "avg_rating": 4.1591
+          }
+        ]
+      },
+      "results_match": true,
+      "rows": 20,
+      "faster_engine": "Neo4j",
+      "speedup_ratio": 2.01
+    }
+  },
+  "seconds": 3.51
+}

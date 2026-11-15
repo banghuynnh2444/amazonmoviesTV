@@ -1,0 +1,363 @@
+{
+  "url": "http://127.0.0.1:5055",
+  "frontend": {
+    "template": "amazon_movies/templates/index.html",
+    "stylesheet": "amazon_movies/static/styles.css",
+    "script": "amazon_movies/static/app.js",
+    "libraries": [
+      "Chart.js 4.4.3 (static/vendor/chart.umd.js)",
+      "vis-network 9.1.9 (static/vendor/vis-network.min.js)"
+    ],
+    "offline": "Không nạp tài nguyên từ Internet",
+    "user_pages": [
+      {
+        "route": "#/",
+        "content": "Trang chủ: phim được yêu thích nhất, điểm cao nhất (Bayesian), thể loại; gợi ý riêng khi đã đăng nhập"
+      },
+      {
+        "route": "#/search",
+        "content": "Tìm phim: từ khóa, thể loại, định dạng, khoảng giá, sắp xếp, phân trang; mỗi tác phẩm một dòng"
+      },
+      {
+        "route": "#/search?mode=reviews",
+        "content": "Tìm trong lời đánh giá, lọc khen/chê"
+      },
+      {
+        "route": "#/movie/{asin}",
+        "content": "Chi tiết phim: điểm và phân bố sao theo tác phẩm, khen/chê, từ khóa, các phiên bản, chấm/sửa/xóa đánh giá, phim mua cùng"
+      },
+      {
+        "route": "#/for-you",
+        "content": "Gợi ý cho bạn: chấm nhanh khi chưa đủ 3 phim, danh sách gợi ý kèm lý do"
+      },
+      {
+        "route": "#/reviewer/{reviewerID}",
+        "content": "Các đánh giá của một người xem"
+      },
+      {
+        "route": "#/account",
+        "content": "Đăng ký, đăng nhập, phim bạn đã chấm"
+      }
+    ],
+    "admin_pages": [
+      {
+        "route": "#/admin",
+        "content": "Hệ thống & dữ liệu: trạng thái CSDL, đối soát trực tiếp, hàng chờ đồng bộ, gộp ấn bản, tham số gợi ý"
+      },
+      {
+        "route": "#/admin/recommend",
+        "content": "Phân tích gợi ý: 5 phương pháp, thành phần Hybrid, người dùng tương đồng"
+      },
+      {
+        "route": "#/admin/user/{reviewerID}",
+        "content": "Lịch sử review và người dùng tương đồng"
+      },
+      {
+        "route": "#/admin/graph",
+        "content": "Đồ thị con quanh một phim hoặc người dùng (vis-network)"
+      },
+      {
+        "route": "#/admin/stats",
+        "content": "Thống kê review: kiểm chứng VADER và 6 biểu đồ (Chart.js)"
+      },
+      {
+        "route": "#/admin/experiments",
+        "content": "Kết quả thực nghiệm đọc từ reports/"
+      },
+      {
+        "route": "#/admin/communities",
+        "content": "PageRank, Louvain và 10 cộng đồng lớn nhất"
+      }
+    ]
+  },
+  "access": "Khu quản trị và API phân tích trả 401 khi chưa đăng nhập, 403 với tài khoản người dùng thường.",
+  "sample": {
+    "reviewerID": "A1PME65QLLQSLA",
+    "asin": "B00OV3VGP0",
+    "community": 12406,
+    "work_reviews": 4095
+  },
+  "endpoints_verified": {
+    "/": {
+      "status": 200,
+      "expected": 200,
+      "ms": 1.8
+    },
+    "/static/app.js": {
+      "status": 200,
+      "expected": 200,
+      "ms": 65.0
+    },
+    "/static/styles.css": {
+      "status": 200,
+      "expected": 200,
+      "ms": 1.2
+    },
+    "/static/vendor/chart.umd.js": {
+      "status": 200,
+      "expected": 200,
+      "ms": 0.8
+    },
+    "/static/vendor/vis-network.min.js": {
+      "status": 200,
+      "expected": 200,
+      "ms": 0.6
+    },
+    "/api/health": {
+      "status": 200,
+      "expected": 200,
+      "ms": 1.1
+    },
+    "/api/facets": {
+      "status": 200,
+      "expected": 200,
+      "ms": 1073.9
+    },
+    "/api/home": {
+      "status": 200,
+      "expected": 200,
+      "ms": 3986.6
+    },
+    "/api/products?q=star%20wars&format=Blu-ray&min_price=5&max_price=30&sort=rating": {
+      "status": 200,
+      "expected": 200,
+      "ms": 203.3
+    },
+    "/api/products/B00OV3VGP0": {
+      "status": 200,
+      "expected": 200,
+      "ms": 1.2
+    },
+    "/api/products/B00OV3VGP0/keywords": {
+      "status": 200,
+      "expected": 200,
+      "ms": 23.6
+    },
+    "/api/products/B00OV3VGP0/related?steps=1": {
+      "status": 200,
+      "expected": 200,
+      "ms": 52.0
+    },
+    "/api/products/B00OV3VGP0/related?steps=2": {
+      "status": 200,
+      "expected": 200,
+      "ms": 4.9
+    },
+    "/api/reviews?q=masterpiece&sentiment=negative": {
+      "status": 200,
+      "expected": 200,
+      "ms": 1288.1
+    },
+    "/api/reviews?q=good": {
+      "status": 200,
+      "expected": 200,
+      "ms": 712.9
+    },
+    "/api/reviews?work=B00OV3VGP0&sort=helpful": {
+      "status": 200,
+      "expected": 200,
+      "ms": 8.1
+    },
+    "/api/users/A1PME65QLLQSLA/profile": {
+      "status": 200,
+      "expected": 200,
+      "ms": 21.1
+    },
+    "/api/products/KHONG_TON_TAI": {
+      "status": 404,
+      "expected": 404,
+      "ms": 1.0
+    },
+    "/api/products?min_price=abc": {
+      "status": 400,
+      "expected": 400,
+      "ms": 0.3
+    },
+    "/api/reviews": {
+      "status": 200,
+      "expected": 200,
+      "ms": 2.7
+    },
+    "/api/auth/me": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.2
+    },
+    "/api/me/recommendations": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.2
+    },
+    "/api/me/to-rate": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.2
+    },
+    "/api/admin/overview (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.2
+    },
+    "/api/admin/overview (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 11869.6
+    },
+    "/api/users/sample (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/users/sample (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 137.1
+    },
+    "/api/users/A1PME65QLLQSLA/similar (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/users/A1PME65QLLQSLA/similar (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 28.0
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=hybrid (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=hybrid (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 541.3
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=collaborative (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=collaborative (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 316.7
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=related (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=related (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 19.7
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=content (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=content (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 213.5
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=popular (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.5
+    },
+    "/api/recommendations/A1PME65QLLQSLA?method=popular (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 402.8
+    },
+    "/api/recommendations/NGUOI_DUNG_MOI?method=hybrid (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/recommendations/NGUOI_DUNG_MOI?method=hybrid (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 177.4
+    },
+    "/api/graph/ego?asin=B00OV3VGP0 (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/graph/ego?asin=B00OV3VGP0 (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 173.0
+    },
+    "/api/graph/ego?user=A1PME65QLLQSLA (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/graph/ego?user=A1PME65QLLQSLA (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 119.6
+    },
+    "/api/statistics (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.2
+    },
+    "/api/statistics (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 4326.9
+    },
+    "/api/analytics/communities (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.5
+    },
+    "/api/analytics/communities (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 1.5
+    },
+    "/api/analytics/communities?community=12406 (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.4
+    },
+    "/api/analytics/communities?community=12406 (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 51.2
+    },
+    "/api/experiments (không đăng nhập)": {
+      "status": 401,
+      "expected": 401,
+      "ms": 0.3
+    },
+    "/api/experiments (quản trị)": {
+      "status": 200,
+      "expected": 200,
+      "ms": 12.5
+    },
+    "/api/recommendations/x?method=sai (quản trị)": {
+      "status": 400,
+      "expected": 400,
+      "ms": 0.4
+    }
+  },
+  "behaviour": {
+    "new_user_gets_popular_fallback": true,
+    "common_word_search_is_capped": {
+      "query": "good",
+      "total_capped": true,
+      "sort": "unranked"
+    }
+  },
+  "endpoints": 54,
+  "ok": true,
+  "checked_at": "2026-11-14 19:44:39"
+}

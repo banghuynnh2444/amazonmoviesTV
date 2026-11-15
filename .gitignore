@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+data/
+logs/
+reports/private_*
+node_modules/
+*.pyc
+*.zip
+*.tmp
+reports/dashboard_cache.json

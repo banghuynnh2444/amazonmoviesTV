@@ -1,0 +1,718 @@
+{
+  "pagerank": {
+    "parameters": {
+      "maxIterations": 200,
+      "tolerance": 1e-07,
+      "dampingFactor": 0.85
+    },
+    "projection": {
+      "nodeCount": 60109,
+      "relationshipCount": 843257
+    },
+    "ranIterations": 113,
+    "didConverge": true,
+    "centralityDistribution": {
+      "p99": 8.140440940856934,
+      "min": 0.14999961853027344,
+      "max": 51.88525390624999,
+      "mean": 0.7694416495936567,
+      "p90": 1.603285789489746,
+      "p999": 22.872801780700684,
+      "p50": 0.21911239624023438,
+      "p95": 2.8365774154663086,
+      "p75": 0.708643913269043
+    },
+    "top_products": [
+      {
+        "asin": "B00BY0EBK0",
+        "title": "War: 10-Movie Collection",
+        "pagerank": 51.8852,
+        "avg_rating": 4.354330708661418,
+        "review_count": 127,
+        "community": 57900,
+        "degree": 913
+      },
+      {
+        "asin": "B00OV3VGP0",
+        "title": "John Wick",
+        "pagerank": 50.173,
+        "avg_rating": 4.335693359375,
+        "review_count": 4096,
+        "community": 12406,
+        "degree": 367
+      },
+      {
+        "asin": "B00EQ2KXL4",
+        "title": "Drive-In Cult Cinema Collection: Classic 200  Features",
+        "pagerank": 44.8498,
+        "avg_rating": 4.533333333333333,
+        "review_count": 15,
+        "community": 10700,
+        "degree": 654
+      },
+      {
+        "asin": "B017JOME6M",
+        "title": "Hallmark Holiday Collection A Very Merry Mix-Up, The Christmas Ornament, Hitched For the Holidays, Come Dance With Me",
+        "pagerank": 41.515,
+        "avg_rating": 4.72,
+        "review_count": 100,
+        "community": 54953,
+        "degree": 611
+      },
+      {
+        "asin": "B00WV7TNEE",
+        "title": "Vintage Sci-Fi Movies - 6 Movie Collection",
+        "pagerank": 40.6089,
+        "avg_rating": 4.2631578947368425,
+        "review_count": 114,
+        "community": 10700,
+        "degree": 712
+      },
+      {
+        "asin": "B018TNKDOW",
+        "title": "A Christmas Detour",
+        "pagerank": 39.4782,
+        "avg_rating": 4.725714285714286,
+        "review_count": 175,
+        "community": 54953,
+        "degree": 528
+      },
+      {
+        "asin": "B00O1D3C6Q",
+        "title": "Hallmark Holiday Collection #3 Town that Christmas Forgot/Naughty or Nice/It's Christmas, Carol!/The Wishing Tree",
+        "pagerank": 39.4512,
+        "avg_rating": 4.678571428571429,
+        "review_count": 112,
+        "community": 54953,
+        "degree": 594
+      },
+      {
+        "asin": "B00O1D3C66",
+        "title": "Hallmark Holiday Collection 4 Christmas Song/Baby's First Christmas/Bride for Christmas/Thanksgiving Day Parade",
+        "pagerank": 38.0655,
+        "avg_rating": 4.701612903225806,
+        "review_count": 124,
+        "community": 54953,
+        "degree": 479
+      },
+      {
+        "asin": "B00DNLZRLU",
+        "title": "Holiday Romance Collection Movie 10 Pack",
+        "pagerank": 37.3975,
+        "avg_rating": 4.606194690265487,
+        "review_count": 226,
+        "community": 54953,
+        "degree": 667
+      },
+      {
+        "asin": "B00O1D3C3E",
+        "title": "A Royal Christmas",
+        "pagerank": 36.8681,
+        "avg_rating": 4.688,
+        "review_count": 250,
+        "community": 54953,
+        "degree": 490
+      },
+      {
+        "asin": "B018TNBX50",
+        "title": "Crown for Christmas",
+        "pagerank": 36.7897,
+        "avg_rating": 4.872521246458923,
+        "review_count": 353,
+        "community": 54953,
+        "degree": 485
+      },
+      {
+        "asin": "B00D9EJFZA",
+        "title": "Movies 4 You - Sci Fi Classics (The Man from Planet X / Beyond the Time Barrier / The Time Travelers / The Angry Red Planet)",
+        "pagerank": 36.3551,
+        "avg_rating": 4.347150259067358,
+        "review_count": 193,
+        "community": 10700,
+        "degree": 600
+      },
+      {
+        "asin": "B00O1D3C1G",
+        "title": "Hallmark Holiday Collection 2 Cancel Christmas/Christmas Magic/Santa Suit/Mistletoe Over Manhattan",
+        "pagerank": 36.0592,
+        "avg_rating": 4.682539682539683,
+        "review_count": 63,
+        "community": 54953,
+        "degree": 462
+      },
+      {
+        "asin": "B00KU3Y5CG",
+        "title": "Steinsgate: Complete Series Classic",
+        "pagerank": 35.5523,
+        "avg_rating": 4.626984126984127,
+        "review_count": 126,
+        "community": 27537,
+        "degree": 515
+      },
+      {
+        "asin": "B00ZGIOL8I",
+        "title": "Hammer Film Collection: Volume 1",
+        "pagerank": 34.6151,
+        "avg_rating": 4.4576271186440675,
+        "review_count": 59,
+        "community": 10700,
+        "degree": 457
+      },
+      {
+        "asin": "B00HFWETZ8",
+        "title": "Sci-Fi Creature Classics - 4-Movie Set - 20 Million Miles to Earth - The Giant Claw - It Came From Beneath The Sea - Mothra",
+        "pagerank": 34.4677,
+        "avg_rating": 4.543010752688172,
+        "review_count": 186,
+        "community": 10700,
+        "degree": 524
+      },
+      {
+        "asin": "B01ELI9E9O",
+        "title": "The Martian: Extended Edition 4K Ultra-HD",
+        "pagerank": 34.3627,
+        "avg_rating": 4.670454545454546,
+        "review_count": 176,
+        "community": 12406,
+        "degree": 103
+      },
+      {
+        "asin": "B00R3MU8XM",
+        "title": "Hallmark Hall of Fame Christmas with Holly Dvd",
+        "pagerank": 34.0927,
+        "avg_rating": 4.762711864406779,
+        "review_count": 59,
+        "community": 54953,
+        "degree": 473
+      },
+      {
+        "asin": "B0112HPVEY",
+        "title": "Christmas at Cartwright's",
+        "pagerank": 33.6527,
+        "avg_rating": 4.6625,
+        "review_count": 160,
+        "community": 54953,
+        "degree": 382
+      },
+      {
+        "asin": "B01851XUV6",
+        "title": "Ice Sculpture Christmas",
+        "pagerank": 33.5087,
+        "avg_rating": 4.69172932330827,
+        "review_count": 133,
+        "community": 54953,
+        "degree": 352
+      }
+    ]
+  },
+  "louvain": {
+    "parameters": {
+      "maxLevels": 10,
+      "concurrency": 1
+    },
+    "projection": {
+      "nodeCount": 60109,
+      "relationshipCount": 1686514
+    },
+    "communityCount": 15512,
+    "modularity": 0.84072,
+    "ranLevels": 3,
+    "connected_products": 44976,
+    "isolated_products": 15133,
+    "communities_with_5_or_more": 58,
+    "top10_share_of_connected": 0.5969,
+    "top_communities": [
+      {
+        "community": 12406,
+        "size": 4733,
+        "avg_rating": 4.045,
+        "distinctive_categories": [
+          {
+            "category": "All Sony Pictures Titles",
+            "products": 529,
+            "lift": 2.66
+          },
+          {
+            "category": "Sony Pictures Home Entertainment",
+            "products": 535,
+            "lift": 2.63
+          },
+          {
+            "category": "20th Century Fox Home Entertainment",
+            "products": 316,
+            "lift": 1.9
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B00OV3VGP0",
+            "title": "John Wick",
+            "pagerank": 50.173
+          },
+          {
+            "asin": "B01ELI9E9O",
+            "title": "The Martian: Extended Edition 4K Ultra-HD",
+            "pagerank": 34.3627
+          },
+          {
+            "asin": "B00BQK4XUQ",
+            "title": "Guilty Pleasures: 1980s Collection",
+            "pagerank": 28.3068
+          },
+          {
+            "asin": "B00SJFG6L0",
+            "title": "Blade Trilogy",
+            "pagerank": 27.0128
+          },
+          {
+            "asin": "B000Y5CHIE",
+            "title": "The Last of the Mohicans",
+            "pagerank": 27.0094
+          }
+        ]
+      },
+      {
+        "community": 57900,
+        "size": 3367,
+        "avg_rating": 4.257,
+        "distinctive_categories": [
+          {
+            "category": "Musicals",
+            "products": 173,
+            "lift": 4.04
+          },
+          {
+            "category": "MGM Home Entertainment",
+            "products": 180,
+            "lift": 3.62
+          },
+          {
+            "category": "All MGM Titles",
+            "products": 179,
+            "lift": 3.61
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B00BY0EBK0",
+            "title": "War: 10-Movie Collection",
+            "pagerank": 51.8852
+          },
+          {
+            "asin": "B00AMDA2OY",
+            "title": "Classic Westerns: 10-Movie Collection",
+            "pagerank": 33.1381
+          },
+          {
+            "asin": "B000U1ZV6M",
+            "title": "4 Film Favorites: John Wayne (Back to Bataan, Flying Leathernecks, Operation Pacific, They Were Expendable)",
+            "pagerank": 31.8895
+          },
+          {
+            "asin": "B01DL6PBIA",
+            "title": "Cowboy Legends - 50 Movie MegaPack Digital",
+            "pagerank": 25.4574
+          },
+          {
+            "asin": "B0050MB43A",
+            "title": "4 Film Favorites: Classic Holiday Volume 2 (All Mine to Give / Blossoms in the Dust / Holiday Affair / It Happened on 5th Avenue)",
+            "pagerank": 25.1315
+          }
+        ]
+      },
+      {
+        "community": 10700,
+        "size": 3237,
+        "avg_rating": 3.685,
+        "distinctive_categories": [
+          {
+            "category": "Horror",
+            "products": 403,
+            "lift": 4.52
+          },
+          {
+            "category": "Fantasy",
+            "products": 278,
+            "lift": 4.13
+          },
+          {
+            "category": "Science Fiction",
+            "products": 272,
+            "lift": 2.0
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B00EQ2KXL4",
+            "title": "Drive-In Cult Cinema Collection: Classic 200  Features",
+            "pagerank": 44.8498
+          },
+          {
+            "asin": "B00WV7TNEE",
+            "title": "Vintage Sci-Fi Movies - 6 Movie Collection",
+            "pagerank": 40.6089
+          },
+          {
+            "asin": "B00D9EJFZA",
+            "title": "Movies 4 You - Sci Fi Classics (The Man from Planet X / Beyond the Time Barrier / The Time Travelers / The Angry Red Planet)",
+            "pagerank": 36.3551
+          },
+          {
+            "asin": "B00ZGIOL8I",
+            "title": "Hammer Film Collection: Volume 1",
+            "pagerank": 34.6151
+          },
+          {
+            "asin": "B00HFWETZ8",
+            "title": "Sci-Fi Creature Classics - 4-Movie Set - 20 Million Miles to Earth - The Giant Claw - It Came From Beneath The Sea - Mothra",
+            "pagerank": 34.4677
+          }
+        ]
+      },
+      {
+        "community": 23787,
+        "size": 2640,
+        "avg_rating": 3.525,
+        "distinctive_categories": [
+          {
+            "category": "Fantasy",
+            "products": 361,
+            "lift": 6.58
+          },
+          {
+            "category": "Horror",
+            "products": 450,
+            "lift": 6.18
+          },
+          {
+            "category": "All Lionsgate Titles",
+            "products": 254,
+            "lift": 3.59
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B00LVZK1FW",
+            "title": "Children of The Corn 6-Film Collection",
+            "pagerank": 28.3838
+          },
+          {
+            "asin": "B00MFCPURE",
+            "title": "Saw 1-7 Movie Collection",
+            "pagerank": 27.3513
+          },
+          {
+            "asin": "B001DJLD1W",
+            "title": "4 Film Favorites: Nightmare on Elm Street 1-4",
+            "pagerank": 18.9018
+          },
+          {
+            "asin": "B012YPV0KM",
+            "title": "5 Film Col Final Destination",
+            "pagerank": 17.556
+          },
+          {
+            "asin": "B00C2CDJ34",
+            "title": "The Blob",
+            "pagerank": 17.3689
+          }
+        ]
+      },
+      {
+        "community": 5352,
+        "size": 2447,
+        "avg_rating": 4.542,
+        "distinctive_categories": [
+          {
+            "category": "Comedy",
+            "products": 535,
+            "lift": 2.74
+          },
+          {
+            "category": "Warner Home Video",
+            "products": 195,
+            "lift": 1.78
+          },
+          {
+            "category": "Action & Adventure",
+            "products": 291,
+            "lift": 1.57
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B00DYQ1G78",
+            "title": "Magnum P.I.: The Complete Series",
+            "pagerank": 30.5023
+          },
+          {
+            "asin": "B00NGAJJGC",
+            "title": "Diagnosis Murder// Complete Collection/8 Seasons 178 Episodes",
+            "pagerank": 20.0753
+          },
+          {
+            "asin": "B0126M38DA",
+            "title": "The Bionic Woman: The Complete Series",
+            "pagerank": 19.5436
+          },
+          {
+            "asin": "B00E8AVN9U",
+            "title": "Murder, She Wrote: The Complete Series",
+            "pagerank": 18.5622
+          },
+          {
+            "asin": "B00O4CWP7G",
+            "title": "Mork & Mindy: The Complete Series",
+            "pagerank": 17.6534
+          }
+        ]
+      },
+      {
+        "community": 54953,
+        "size": 2323,
+        "avg_rating": 4.275,
+        "distinctive_categories": [
+          {
+            "category": "Christmas",
+            "products": 256,
+            "lift": 12.84
+          },
+          {
+            "category": "Kids & Family",
+            "products": 254,
+            "lift": 2.41
+          },
+          {
+            "category": "Drama",
+            "products": 562,
+            "lift": 2.38
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B017JOME6M",
+            "title": "Hallmark Holiday Collection A Very Merry Mix-Up, The Christmas Ornament, Hitched For the Holidays, Come Dance With Me",
+            "pagerank": 41.515
+          },
+          {
+            "asin": "B018TNKDOW",
+            "title": "A Christmas Detour",
+            "pagerank": 39.4782
+          },
+          {
+            "asin": "B00O1D3C6Q",
+            "title": "Hallmark Holiday Collection #3 Town that Christmas Forgot/Naughty or Nice/It's Christmas, Carol!/The Wishing Tree",
+            "pagerank": 39.4512
+          },
+          {
+            "asin": "B00O1D3C66",
+            "title": "Hallmark Holiday Collection 4 Christmas Song/Baby's First Christmas/Bride for Christmas/Thanksgiving Day Parade",
+            "pagerank": 38.0655
+          },
+          {
+            "asin": "B00DNLZRLU",
+            "title": "Holiday Romance Collection Movie 10 Pack",
+            "pagerank": 37.3975
+          }
+        ]
+      },
+      {
+        "community": 3479,
+        "size": 2187,
+        "avg_rating": 4.274,
+        "distinctive_categories": [
+          {
+            "category": "All A&E Titles",
+            "products": 253,
+            "lift": 11.4
+          },
+          {
+            "category": "Documentary",
+            "products": 901,
+            "lift": 7.12
+          },
+          {
+            "category": "Drama",
+            "products": 138,
+            "lift": 0.62
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B0049TC8CQ",
+            "title": "Third Reich: The Rise And Fall",
+            "pagerank": 18.8248
+          },
+          {
+            "asin": "B000NO2416",
+            "title": "The Dark Ages",
+            "pagerank": 16.9485
+          },
+          {
+            "asin": "B005QW98AK",
+            "title": "Founding Fathers",
+            "pagerank": 16.7208
+          },
+          {
+            "asin": "B005ELVC3O",
+            "title": "History Classics: History’s Mysteries",
+            "pagerank": 14.8838
+          },
+          {
+            "asin": "B000BB1520",
+            "title": "The History Channel Presents The Crusades - Crescent & The Cross",
+            "pagerank": 14.3842
+          }
+        ]
+      },
+      {
+        "community": 23185,
+        "size": 2116,
+        "avg_rating": 4.353,
+        "distinctive_categories": [
+          {
+            "category": "All BBC Titles",
+            "products": 385,
+            "lift": 15.0
+          },
+          {
+            "category": "Mystery & Thrillers",
+            "products": 127,
+            "lift": 7.29
+          },
+          {
+            "category": "Drama",
+            "products": 512,
+            "lift": 2.38
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B01BX2B4JE",
+            "title": "Shetland: Season 3",
+            "pagerank": 30.0644
+          },
+          {
+            "asin": "B00VKX6V9U",
+            "title": "The Brokenwood Mysteries, Series 1",
+            "pagerank": 25.0484
+          },
+          {
+            "asin": "B01DGN1HY0",
+            "title": "Masterpiece Mystery: Endeavour, Series 3",
+            "pagerank": 20.4402
+          },
+          {
+            "asin": "B01EIS4668",
+            "title": "DCI Banks: Season 5",
+            "pagerank": 19.2415
+          },
+          {
+            "asin": "B00DQN6IOK",
+            "title": "The Hollow Crown: The Complete Series",
+            "pagerank": 18.2765
+          }
+        ]
+      },
+      {
+        "community": 27537,
+        "size": 2059,
+        "avg_rating": 4.432,
+        "distinctive_categories": [
+          {
+            "category": "Anime",
+            "products": 444,
+            "lift": 24.23
+          },
+          {
+            "category": "Anime & Manga",
+            "products": 394,
+            "lift": 15.95
+          },
+          {
+            "category": "Animation",
+            "products": 558,
+            "lift": 9.99
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B00KU3Y5CG",
+            "title": "Steinsgate: Complete Series Classic",
+            "pagerank": 35.5523
+          },
+          {
+            "asin": "B008YRL7JE",
+            "title": "Black Lagoon: Complete Set - Season 1 & 2",
+            "pagerank": 33.3763
+          },
+          {
+            "asin": "B00KDQDU2G",
+            "title": "Freezing: Season 1",
+            "pagerank": 31.3148
+          },
+          {
+            "asin": "B00V7ORQIM",
+            "title": "No Game No Life",
+            "pagerank": 31.19
+          },
+          {
+            "asin": "B01HEXVJJG",
+            "title": "Psycho-Pass: Season One",
+            "pagerank": 21.1078
+          }
+        ]
+      },
+      {
+        "community": 5681,
+        "size": 1738,
+        "avg_rating": 4.457,
+        "distinctive_categories": [
+          {
+            "category": "All HBO Titles",
+            "products": 111,
+            "lift": 8.38
+          },
+          {
+            "category": "General",
+            "products": 109,
+            "lift": 3.28
+          },
+          {
+            "category": "Drama",
+            "products": 396,
+            "lift": 2.24
+          }
+        ],
+        "sample_products": [
+          {
+            "asin": "B000FIHN8O",
+            "title": "Threshold - The Complete Series",
+            "pagerank": 18.8138
+          },
+          {
+            "asin": "B00HSSZKAW",
+            "title": "Warehouse 13: The Complete Series",
+            "pagerank": 14.1368
+          },
+          {
+            "asin": "B000P4ZL5K",
+            "title": "Fargo: Season 2",
+            "pagerank": 13.4576
+          },
+          {
+            "asin": "B00YSBFHMI",
+            "title": "NCIS: New Orleans: Season 1",
+            "pagerank": 11.4147
+          },
+          {
+            "asin": "B008P9M614",
+            "title": "House: The Complete Series",
+            "pagerank": 11.3154
+          }
+        ]
+      }
+    ]
+  },
+  "seconds": 11.72
+}

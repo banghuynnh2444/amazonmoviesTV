@@ -1,0 +1,12 @@
+{
+  "Movies_and_TV_5.json.gz": {
+    "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_v2/categoryFilesSmall/Movies_and_TV_5.json.gz",
+    "bytes": 791152395,
+    "sha256": "e8660b8bdb4971a36d1e8b23850889083eb577f9c8dc60497b301ec900fd4e68"
+  },
+  "meta_Movies_and_TV.json.gz": {
+    "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_v2/metaFiles2/meta_Movies_and_TV.json.gz",
+    "bytes": 105021691,
+    "sha256": "b7362b6c0bf92a6c47fbbb7855aea2bffd45042f6f10af73bc3afa3d8716c3e9"
+  }
+}

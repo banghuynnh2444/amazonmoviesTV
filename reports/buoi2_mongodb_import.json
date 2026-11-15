@@ -1,0 +1,16 @@
+{
+  "review_limit": null,
+  "sentiment_in_import": true,
+  "metadata_raw_rows": 203766,
+  "metadata_valid_rows": 203707,
+  "review_raw_rows": 3410019,
+  "review_invalid": 0,
+  "review_without_metadata": 5227,
+  "review_valid_source_rows": 3404792,
+  "unused_metadata_removed": 121672,
+  "products": 60109,
+  "reviews": 3296089,
+  "users": 297529,
+  "exact_duplicate_source_rows": 108703,
+  "seconds": 915.54
+}

@@ -1,0 +1,116 @@
+{
+  "dataset_reviews": 3296089,
+  "methods": {
+    "collaborative": {
+      "count": 10,
+      "fallback": false,
+      "examples": [
+        {
+          "asin": "B000TGUUFA",
+          "score": 5.005613126079448
+        },
+        {
+          "asin": "B0039UT3LK",
+          "score": 5.005613126079448
+        },
+        {
+          "asin": "B004S6E91S",
+          "score": 5.005613126079448
+        }
+      ]
+    },
+    "related": {
+      "count": 10,
+      "fallback": false,
+      "examples": [
+        {
+          "asin": "B00ZASOJOA",
+          "score": 27.0
+        },
+        {
+          "asin": "B00YSBFHMI",
+          "score": 24.0
+        },
+        {
+          "asin": "B006TTC5GS",
+          "score": 20.0
+        }
+      ]
+    },
+    "content": {
+      "count": 10,
+      "fallback": false,
+      "examples": [
+        {
+          "asin": "B00004WZ06",
+          "score": 7.0
+        },
+        {
+          "asin": "B00006WUWQ",
+          "score": 7.0
+        },
+        {
+          "asin": "6301640594",
+          "score": 6.6
+        }
+      ]
+    },
+    "hybrid": {
+      "count": 10,
+      "fallback": false,
+      "examples": [
+        {
+          "asin": "B000LE178Y",
+          "score": 0.6354335734983935
+        },
+        {
+          "asin": "B00CYQXDNE",
+          "score": 0.6270894979892409
+        },
+        {
+          "asin": "B00915G6NK",
+          "score": 0.6211118979916059
+        }
+      ]
+    },
+    "popular": {
+      "count": 10,
+      "fallback": false,
+      "examples": [
+        {
+          "asin": "B00PY4Q9OS",
+          "score": 6495.0
+        },
+        {
+          "asin": "B00YSG2ZPA",
+          "score": 5655.0
+        },
+        {
+          "asin": "B009934S5M",
+          "score": 4651.0
+        }
+      ]
+    }
+  },
+  "sentiment_alignment": {
+    "high_star_positive_rate": 0.8835,
+    "low_star_negative_rate": 0.5186,
+    "low_star_non_positive_rate": 0.6078,
+    "polarity_agreement_rate": 0.8395
+  },
+  "api_statuses": {
+    "/api/health": 200,
+    "/api/products": 200,
+    "/api/products?q=film": 200,
+    "/api/reviews?q=good": 200,
+    "/api/products/0005019281": 200,
+    "/api/products/0005019281/related": 200,
+    "/api/products/0005019281/keywords": 200,
+    "/api/home": 200,
+    "/api/recommendations/A222M965XQ9WGZ?method=hybrid (không đăng nhập)": 401,
+    "/api/statistics (không đăng nhập)": 401,
+    "/api/recommendations/A222M965XQ9WGZ?method=hybrid (quản trị)": 200,
+    "/api/statistics (quản trị)": 200
+  },
+  "all_passed": true
+}

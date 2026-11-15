@@ -1,0 +1,85 @@
+{
+  "brand_values_emptied": 2743,
+  "brand_top_junk": [
+    [
+      "Various",
+      1605
+    ],
+    [
+      ".",
+      537
+    ],
+    [
+      "n/a",
+      138
+    ],
+    [
+      "-",
+      132
+    ],
+    [
+      "*",
+      92
+    ],
+    [
+      "None",
+      67
+    ],
+    [
+      "N/a",
+      31
+    ],
+    [
+      "--",
+      18
+    ]
+  ],
+  "brand_normalized_spelling": 13,
+  "titles_html_fixed": 855,
+  "main_cat": [
+    [
+      "Movies & TV",
+      60054
+    ],
+    [
+      "Sports & Outdoors",
+      30
+    ],
+    [
+      "Books",
+      6
+    ],
+    [
+      "All Electronics",
+      4
+    ],
+    [
+      "",
+      4
+    ],
+    [
+      "Toys & Games",
+      4
+    ],
+    [
+      "Amazon Home",
+      3
+    ],
+    [
+      "Industrial & Scientific",
+      2
+    ],
+    [
+      "Arts, Crafts & Sewing",
+      1
+    ],
+    [
+      "Tools & Home Improvement",
+      1
+    ]
+  ],
+  "reviews_unsupported_language": 1,
+  "works_with_brand": 48409,
+  "works": 59395,
+  "note": "Brand rác (Various, \".\", n/a…) đưa về rỗng, giữ giá trị gốc ở brand_raw; tiêu đề lẫn thẻ HTML được làm sạch, giữ title_raw. Với phim, Amazon ghi brand chủ yếu là tên diễn viên chính."
+}
